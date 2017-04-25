@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var db=require('./model/db');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
 
 var dishes=require('./routes/dishRouter');
 var leaders=require('./routes/leaderRouter');
@@ -28,8 +26,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
 
 app.get('/dishes',dishes.getDishes);
 app.get('/dishes/:id',dishes.getSpecificDishes);
