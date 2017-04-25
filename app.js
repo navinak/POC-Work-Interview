@@ -33,6 +33,10 @@ app.use('/users', users);
 
 app.get('/dishes',dishes.getDishes);
 app.get('/dishes/:id',dishes.getSpecificDishes);
+app.post('/dishes',dishes.addDish);
+app.put('/dishes/:id',dishes.updateDish);
+app.delete('/dishes/:id',dishes.deleteById);
+app.delete('/dishes',dishes.deleteAll);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

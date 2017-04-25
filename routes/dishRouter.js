@@ -28,3 +28,53 @@ exports.getSpecificDishes=function (req,res) {
         }
     })
 };
+
+exports.addDish=function (req,res) {
+    if(!req.body.name) {
+        return res.send({"status": "error", "message": "missing a parameter"});
+    } else {
+        dish.create({
+            name:req.body.name
+        },function (err,dish) {
+            if (err){
+                res.json({"status":"error","error":"Error in inserting dishes"});
+            }else {
+                res.json({"status":"success"})
+            }
+        });
+    }
+};
+
+exports.updateDish=function (req,res) {
+  if(!req.body.name) {
+      res.json({"status":"error","error":"missing parameter"});
+  }else{
+      dish.update({_id:req.params.id},{$set:{name:req.body.name}},function (err,dish) {
+          if (err){
+              res.json({"status":"error","error":"Error in updating dishes"});
+          } else{
+              res.json({"status":"success"});
+          }
+      });
+  }
+};
+
+exports.deleteById=function (req,res) {
+  dish.remove({_id:req.params.id},function (err) {
+      if(!err){
+          res.json({"status":"success"});
+      }else {
+          res.json({"status":"error","error":"Error in deleting"});
+      }
+  })
+};
+
+exports.deleteAll=function (req,res) {
+  dish.remove({},function (err) {
+      if(!err){
+          res.json({"status":"success"});
+      }else {
+        res.json({"status":"error","error":"Error in deleting"});
+    }
+  })
+};
