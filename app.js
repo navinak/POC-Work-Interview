@@ -38,6 +38,14 @@ app.put('/dishes/:id',dishes.updateDish);
 app.delete('/dishes/:id',dishes.deleteById);
 app.delete('/dishes',dishes.deleteAll);
 
+app.get('/promotions',promos.getPromos);
+app.get('/promotions/:id',promos.getSpecificPromos);
+app.post('/promotions',promos.addPromos);
+app.put('/promotions/:id',promos.updatePromo);
+app.delete('/promotions/:id',promos.deleteById);
+app.delete('/promotions',promos.deleteAll);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
