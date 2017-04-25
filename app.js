@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var db=require('./model/db');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -29,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+app.get('/dishes',dishes.getDishes);
+app.get('/dishes/:id',dishes.getSpecificDishes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
