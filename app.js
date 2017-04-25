@@ -45,6 +45,12 @@ app.put('/promotions/:id',promos.updatePromo);
 app.delete('/promotions/:id',promos.deleteById);
 app.delete('/promotions',promos.deleteAll);
 
+app.get('/leadership',leaders.getLeadership);
+app.get('/leadership/:id',leaders.getSpecificLeadership);
+app.post('/leadership',leaders.addLeadership);
+app.put('/leadership/:id',leaders.updateLeadership);
+app.delete('/leadership/:id',leaders.deleteById);
+app.delete('/leadership',leaders.deleteAll);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
